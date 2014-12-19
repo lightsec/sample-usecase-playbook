@@ -1,0 +1,18 @@
+
+# file: basestations.yml
+
+- name: Common tasks in all servers
+  hosts: basestations
+  roles:
+    - common
+  tags:
+    - pre
+    - common
+
+
+- name: Install basestation
+  hosts: basestations
+  roles:
+    - basestation-installation
+  tags:
+    - basestation

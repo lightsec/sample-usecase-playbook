@@ -1,0 +1,53 @@
+---
+
+- name: Clone basestation
+  git:
+    repo: "{{ url }}"
+    dest: "{{ installation_path }}"
+    update: yes
+  tags:
+    - git
+    - clone
+    - pull
+    - basestation
+
+
+- name: Install requirements
+  pip:
+    chdir: "{{ installation_path }}"
+    virtualenv: "{{ virtualenv_usecase_path }}"
+    requirements: "{{ requirements_file }}"
+  tags:
+    - virtualenv
+    - pip
+    - requirements
+    - http_bs_lightsec
+
+
+- name: Install app with its requirements
+  pip:
+    virtualenv: "{{ virtualenv_usecase_path }}"
+    # it will inherit packages from the global site-packages
+    virtualenv_site_packages: yes
+    name: "{{ installation_path }}"
+  tags:
+    - virtualenv
+    - pip
+    - http_bs_lightsec
+
+
+- name: Execution permissions for bin
+  # I don't know why, activation scripts are now executable by default
+  file: path="{{ virtualenv_usecase_path }}/bin/{{ item }}" mode=0754
+  with_items:
+    - activate
+    - activate.csh
+    - activate.fish
+    - activate_this.py
+  tags:
+    - virtualenv
+    - activate
+    - permission
+
+
+#- name: Edit configuration file

@@ -1,0 +1,5 @@
+
+
+url: "https://github.com/lightsec/http_bs_lightsec.git"
+installation_path: "{{home_folder}}/basestation"
+requirements_file: "{{ installation_path }}/requirements.txt"

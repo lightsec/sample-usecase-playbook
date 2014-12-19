@@ -1,0 +1,15 @@
+
+# In the example, it corresponds with the host created using vagrant
+basestation ansible_ssh_host=192.168.123.4
+sensor1 ansible_ssh_host=192.168.123.2
+user1 ansible_ssh_host=192.168.123.3
+
+
+[basestations]
+basestation
+
+[sensors]
+sensor1
+
+[users]
+user1

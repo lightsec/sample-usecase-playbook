@@ -1,0 +1,5 @@
+
+# file: main.yml
+- include: basestations.yml
+- include: sensors.yml
+- include: users.yml

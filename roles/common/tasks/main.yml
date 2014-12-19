@@ -1,0 +1,53 @@
+---
+
+- name: Update repos
+  apt: update_cache=yes
+  sudo: True
+  when: ansible_os_family == "Debian"
+
+
+# TODO This should be done in each role to avoid installing openjdk and other Weblab dependencies in the scheduler.
+- name: Bulk dependency installation
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  sudo: True
+  when: ansible_os_family == "Debian"
+  with_items:
+    - git
+    - python
+    - python-dev
+    - python-pip
+    - python-virtualenv
+    - virtualenvwrapper
+  tags:
+    - apt
+    - installation
+    - install
+    - debian
+    - git
+    - virtualenv
+
+
+# Because 127.0.1.1 causes problems with mysql_client when trying to connect to the local MySQL server
+# http://askubuntu.com/questions/39682/changing-127-0-1-1-back-to-127-0-0-1-will-it-break-anything-in-unity
+- name: Change the local address for the hostname
+  replace: dest=/etc/hosts regexp="^127\.0\.1\.1 " replace="127.0.0.1 " backup=yes
+  sudo: True
+  tags:
+    - hostname
+    - configuration
+    - file
+    - localhost
+
+
+- name: Create virtualenv folder
+  file: path="{{item}}"
+        state=directory
+  with_items:
+    - "{{virtualenvwrapper_path}}"
+    - "{{virtualenv_usecase_path}}"
+  tags:
+    - virtualenv
+    - create
+    - folder
