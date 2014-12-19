@@ -28,3 +28,22 @@ This [Ansible playbook](http://docs.ansible.com/playbooks.html) will create the 
 To simply create these machines using [Vagrant](https://www.vagrantup.com/) go to _the root directory of this project_ and run:
 
     vagrant up
+
+
+Usage
+-----
+
+Depending on you needs, you will need to follow one of the following instructions:
+
+* Do nothing.
+  If you ran _vagrant up_ and everything went smoothly, then everything should be installed and working.
+
+* Do all the magic.
+  This option installs _redis_ in the server and installs _rstatus_ in all the machines whose performance wants to be measured.
+
+      ansible-playbook -vvvv -u vagrant --private-key=[private-key-location] -l 'local' -i hosts main.yml
+
+* Just deploy the base station's HTTP server.
+
+        ansible-playbook -vvvv -u vagrant --private-key=[private-key-location] -l 'local' -i hosts basestations.yml
+
