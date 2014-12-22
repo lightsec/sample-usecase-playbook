@@ -16,3 +16,14 @@
     - basestation-installation
   tags:
     - basestation
+    - installation
+
+
+- name: Configure upscript
+  hosts: basestations
+  sudo: True
+  roles:
+    - basestation-daemon
+  tags:
+    - basestation
+    - daemon

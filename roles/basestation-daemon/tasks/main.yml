@@ -1,0 +1,36 @@
+---
+
+- name: Copy configuration file template
+  copy: src="{{daemon_conf_template}}" dest="{{daemon_conf}}" owner={{remote_user}}
+  tags:
+    - upstart
+    - daemon
+    - copy
+    - configuration
+    - panto
+
+
+- name: Replace vars to create the actual daemon configuration
+  replace: dest="/etc/init/run_server.conf" regexp="\[\[{{ item.name }}\]\]" replace="{{ item.value }}" # backup=yes
+  with_items:
+    - { name: "execuser", value: "{{remote_user}}" }  # Replace the user which executes the upstart daemon
+    - { name: "command", value: "{{run_server_command}}" }  # Command to run
+  tags:
+    - upstart
+    - daemon
+    - replace
+    - configuration
+    - panto
+
+
+# TODO Consider using Systemd
+# Apparently, even Ubuntu plans to stop using Upstream
+- name: Reload configuration for daemons
+  shell: "initctl reload-configuration"
+  sudo: True
+  tags:
+    - initctl
+    - reload
+    - configuration
+    - daemon
+    - panto

@@ -11,8 +11,17 @@ ansible_ssh_private_key_file: ~/.vagrant.d/insecure_private_key
 
 # Details for the installation
 virtualenv_name: "usecase"
-virtualenvwrapper_path: "/home/{{remote_user}}/.virtualenvs"
+virtualenvwrapper_path: "{{home_folder}}/.virtualenvs"
 virtualenv_usecase_path: "{{virtualenvwrapper_path}}/{{virtualenv_name}}"
+installation_path: "{{home_folder}}/basestation"  # TODO update
 
 
-# Keyring details
+# Liblightsec configuration details
+config_vars:
+    - { name: "secret", value: "\xa0\x9e\x93u\t\xe1\x16X'\xe0\xdaW+\xc8\xe6\x06i\t^\x9f(\xf0\x9a\xbf" }
+    - { name: "database", value: "sqlite:///{{home_folder}}/database.db" }
+    - { name: "username", value: "user1" }
+    - { name: "password", value: "holamundo" }
+    - { name: "mac", value: "aa:bb:cc:dd:ee:11" }
+    - { name: "authkey", value: "authms1" }
+    - { name: "enckey", value: "encms1" }
