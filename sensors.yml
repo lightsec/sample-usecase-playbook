@@ -1,2 +1,29 @@
 
 # file: sensors.yml
+
+- name: Common tasks in all servers
+  hosts: sensors
+  roles:
+    - common
+  tags:
+    - pre
+    - common
+
+
+- name: Install basestation
+  hosts: sensors
+  roles:
+    - installation
+  tags:
+    - sensors
+    - installation
+
+
+- name: Configure upscript
+  hosts: sensors
+  sudo: True
+  roles:
+    - upstart
+  tags:
+    - sensors
+    - daemon
