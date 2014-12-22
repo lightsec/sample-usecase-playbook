@@ -50,4 +50,19 @@
     - permission
 
 
-#- name: Edit configuration file
+- name: Copy configuration file template
+  command: "cp {{config_file_template}} {{config_file}}"
+  tags:
+    - copy
+    - configuration
+    - file
+
+
+- name: Edit configuration file
+  replace: dest="{{ config_file }}" regexp="({{ item.name }}[:] ).*" replace="\1{{ item.value }}" backup=yes
+  with_items: config_vars
+  tags:
+    - edit
+    - update
+    - configuration
+    - file
