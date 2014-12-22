@@ -1,0 +1,5 @@
+---
+
+- name: restart server
+  service: name=run_server state=restarted
+  sudo: True

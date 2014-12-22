@@ -28,6 +28,8 @@
 - name: Reload configuration for daemons
   shell: "initctl reload-configuration"
   sudo: True
+  notify:
+    - restart server
   tags:
     - initctl
     - reload
