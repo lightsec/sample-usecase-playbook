@@ -13,7 +13,7 @@
 - name: Install basestation
   hosts: basestations
   roles:
-    - basestation-installation
+    - installation
   tags:
     - basestation
     - installation
@@ -23,7 +23,7 @@
   hosts: basestations
   sudo: True
   roles:
-    - basestation-daemon
+    - upstart
   tags:
     - basestation
     - daemon

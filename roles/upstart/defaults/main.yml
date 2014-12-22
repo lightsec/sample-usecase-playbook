@@ -1,0 +1,4 @@
+
+
+daemon_conf_template: "python_upscript.conf.tpl"
+daemon_conf: "/etc/init/run_server.conf"

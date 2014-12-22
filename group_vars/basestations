@@ -1,0 +1,11 @@
+
+
+installation_path: "{{home_folder}}/basestation"
+url: "https://github.com/lightsec/http_bs_lightsec.git"
+
+config_file_template: "{{installation_path}}/UPDATEME.ini"
+config_file: "{{ installation_path }}/config.ini"
+
+requirements_file: "{{ installation_path }}/requirements.txt"
+
+run_server_command: "{{ virtualenv_usecase_path }}/bin/run-basestation -config {{ config_file }}"

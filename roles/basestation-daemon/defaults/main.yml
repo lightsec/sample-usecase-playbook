@@ -1,6 +1,0 @@
-
-
-daemon_conf_template: "python_upscript.conf.tpl"
-daemon_conf: "/etc/init/run_server.conf"
-config_file: "{{ installation_path }}/config.ini"  # TODO only once
-run_server_command: "{{ virtualenv_usecase_path }}/bin/run-basestation -config {{ config_file }}"

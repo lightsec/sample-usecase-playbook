@@ -13,7 +13,6 @@ ansible_ssh_private_key_file: ~/.vagrant.d/insecure_private_key
 virtualenv_name: "usecase"
 virtualenvwrapper_path: "{{home_folder}}/.virtualenvs"
 virtualenv_usecase_path: "{{virtualenvwrapper_path}}/{{virtualenv_name}}"
-installation_path: "{{home_folder}}/basestation"  # TODO update
 
 
 # Liblightsec configuration details

@@ -1,0 +1,11 @@
+
+
+installation_path: "{{home_folder}}/sensor"
+url: "https://github.com/lightsec/http_sensor_lighsec.git"
+
+config_file_template: "{{installation_path}}/UPDATEME.ini"
+config_file: "{{ installation_path }}/config.ini"
+
+requirements_file: "{{ installation_path }}/requirements.txt"
+
+run_server_command: "{{ virtualenv_usecase_path }}/bin/run-sensor -config {{ config_file }}"

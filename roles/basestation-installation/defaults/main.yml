@@ -1,8 +1,0 @@
-
-
-url: "https://github.com/lightsec/http_bs_lightsec.git"
-requirements_file: "{{ installation_path }}/requirements.txt"
-
-
-config_file_template: "{{installation_path}}/UPDATEME.ini"
-config_file: "{{ installation_path }}/config.ini"
