@@ -29,6 +29,11 @@ To simply create these machines using [Vagrant](https://www.vagrantup.com/) go t
 
     vagrant up
 
+After running this command, you will find:
+
+ * [The sample base station server running on port 8081](http://localhost:8081)
+ * [The sample sensor server running on port 8082](http://localhost:8082)
+
 
 Usage
 -----
@@ -43,7 +48,10 @@ Depending on you needs, you will need to follow one of the following instruction
 
       ansible-playbook -vvvv -u vagrant --private-key=[private-key-location] -l 'local' -i hosts main.yml
 
-* Just deploy the base station's HTTP server.
+* Just deploy the base station's HTTP server (it serves the app through the port 5000).
 
         ansible-playbook -vvvv -u vagrant --private-key=[private-key-location] -l 'local' -i hosts basestations.yml
 
+* Just deploy the sensor's HTTP server (it serves the app through the port 5000).
+
+        ansible-playbook -vvvv -u vagrant --private-key=[private-key-location] -l 'local' -i hosts sensors.yml
