@@ -9,7 +9,7 @@ machines = [
     "ip"=> "192.168.123.4",
     "mem"=> 512,
     "cpu"=> 2,
-    "ports"=> [ [80, 8081] ],
+    "ports"=> [ [5000, 8081] ],
     "playbook"=> "basestations.yml"
   },
   {
@@ -17,7 +17,7 @@ machines = [
     "ip"=> "192.168.123.2",
     "mem"=> 512,
     "cpu"=> 2,
-    "ports"=> [ [80, 8082] ],
+    "ports"=> [ [5000, 8082] ],
     "playbook"=> "sensors.yml"
   },
   {
